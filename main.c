@@ -10,6 +10,7 @@ int main() {
     printf("************************************************************\n");
     printf("\033[0m"); // reset text and background color
     printf("\n[1] Add New Record\n");
+    printf("[99] User Profile\n");
     printf("[2] Property Listing\n");
     printf("[3] Search\n");
     printf("[4] Buy/sell\n");
