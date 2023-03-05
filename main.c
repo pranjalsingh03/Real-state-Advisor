@@ -17,6 +17,4 @@ int main() {
     printf("[5] Delete Record\n");
     printf("[0] Exit\n");
     printf("Select Any Option from above: ");
-    // scanf("%d",&a)
-    return 0;
 }
