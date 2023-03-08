@@ -49,7 +49,7 @@ int main() {
 
 void addrecord(){
     char first_name[20],last_name[20],address[50] ,another, Property_holdings[50], total_property[50];
-    int mobile_no  ;
+    int mobile_no;
     FILE *fp;
     fp = fopen("addrecord.txt","w");
 
