@@ -48,8 +48,11 @@ int main() {
 
 
 void addrecord(){
-    char first_name[20],last_name[20],address , another;
+    char first_name[20],last_name[20],address[50] ,another, Property_holdings[50], total_property[50];
+    int mobile_no  ;
     FILE *fp;
+    fp = fopen("addrecord.txt","w");
+
     do
     {
         fp=fopen("addrecord.txt","a");
@@ -60,15 +63,15 @@ void addrecord(){
         scanf("%s",&last_name);                    //last name
         printf("\nEnter the user Address: ");
         scanf("%s",&address);                      //address
-        // printf("\nEnter the user Mobile No.: ");
-        // scanf("%d",&mobile_no);                    //Mobile No.
-        // printf("\nEnter the users Property Holdings: ");
-        // scanf("%s",&info.Property_holdings);            //propert holdings
-        // printf("\nEnter the user total property: ");
-        // scanf("%s",&info.total_property);               //total property
+        printf("\nEnter the user Mobile No.: ");
+        scanf("%d",&mobile_no);                    //Mobile No.
+        printf("\nEnter the users Property Holdings: ");
+        scanf("%s",&Property_holdings);            //propert holdings
+        printf("\nEnter the user total property: ");
+        scanf("%s",&total_property);               //total property
         scanf("%s",&another);
     } while (another=='y' || another=='Y');
-    
+    fclose(fp);
     
 }
 void propertylist(){
