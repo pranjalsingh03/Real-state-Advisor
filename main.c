@@ -82,35 +82,3 @@ void propertylist(){
 
 }
 
-//     char another1;
-//     FILE *fp;
-//     struct agent;
-//     do{
-//         printf("\t\t\t\tAdd New Record\t\t\t\t");
-//         fp=fopen("addrecord.txt","a");
-        // printf("Enter the user first name: ");
-        // scanf("%s", &info.first_name);                   //first name
-        // printf("\nEnter the user last name: ");
-        // scanf("%s",&info.last_name);                    //last name
-        // printf("\nEnter the user Address: ");
-        // scanf("%s",&info.Address);                      //address
-        // printf("\nEnter the user Mobile No.: ");
-        // scanf("%d",&info.Mobile_no);                    //Mobile No.
-        // printf("\nEnter the users Property Holdings: ");
-        // scanf("%s",&info.Property_holdings);            //propert holdings
-        // printf("\nEnter the user total property: ");
-        // scanf("%s",&info.total_property);               //total property
-
-//         if (fp=NULL){
-//             // printf(stderr,"Can't Access the user details");
-//         }
-//         else{
-//             printf("Record sucessfully Submitted\n");
-//         }
-//         fwrite(&info,sizeof(agent addrecord),1,fp);
-//         fclose(fp);
-//         printf("\t\t\t\t Do you want to add any other record?(y/n)");
-//         scanf("%s",&another1);
-//     }while (another1=='y'|| another1=='Y');
-
-// }
