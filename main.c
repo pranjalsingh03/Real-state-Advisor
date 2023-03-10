@@ -56,7 +56,7 @@ void addrecord(){
     do
     {
         fp=fopen("addrecord.txt","a");
-        printf("\t\t\t\tAdd New Record\t\t\t\t");
+        printf("\t\t\t\t\nAdd New Record\t\t\t\t");
         printf("\nEnter the user first name: ");
         scanf("%s", &first_name);                   //first name
         printf("\nEnter the user last name: ");
@@ -69,9 +69,13 @@ void addrecord(){
         scanf("%s",&Property_holdings);            //propert holdings
         printf("\nEnter the user total property: ");
         scanf("%s",&total_property);               //total property
-        scanf("%s",&another);
+
+        // fwrite(&info,sizeof(),1,fp);
+        fclose(fp);
+        printf("\t\t\t\t \nDo you want to add any other record?(y/n)");
+        scanf("\n%s",&another);
     } while (another=='y' || another=='Y');
-    fclose(fp);
+    
     
 }
 void propertylist(){
