@@ -46,7 +46,6 @@ int main() {
     }
 }
 
-
 void addrecord(){
     char first_name[20],last_name[20],address[50] ,another, Property_holdings[50], total_property[50];
     int mobile_no;
@@ -69,10 +68,8 @@ void addrecord(){
         scanf("%s",&Property_holdings);            //propert holdings
         printf("\nEnter the user total property: ");
         scanf("%s",&total_property);               //total property
-
-        // fwrite(&info,sizeof(),1,fp);
         fclose(fp);
-        printf("\t\t\t\t \nDo you want to add any other record?(y/n)");
+        printf("\t\t\t\t \nDo you want to add any other record?(y/n)");     //To add another record
         scanf("\n%s",&another);
     } while (another=='y' || another=='Y');
     
