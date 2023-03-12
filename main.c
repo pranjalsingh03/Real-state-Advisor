@@ -3,6 +3,7 @@
 
 void addrecord();
 void propertylist();
+void search();
 
 struct agent{
     char first_name[20];
@@ -41,6 +42,8 @@ int main() {
     case 2:
         propertylist();
         break;
+    case 3:
+        search();
         }
     
     }
@@ -79,3 +82,6 @@ void propertylist(){
 
 }
 
+void search(){
+    
+}
