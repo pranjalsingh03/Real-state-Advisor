@@ -126,4 +126,3 @@ void findProperties(struct Property propertyList[], int numProperties, int maxPr
     }
 }
 
-// findProperties(propertyList, numProperties, 500000, 800, 3);
