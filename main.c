@@ -1,9 +1,13 @@
 #include <stdio.h>
 
+
+
 void addrecord();
 void propertylist();
 void search();
 void findProperties();
+
+
 struct agent
 {
     char first_name[20];
