@@ -49,6 +49,15 @@ struct Property
     int bedrooms;
 };
 
+Seller sellers[10];
+int num_sellers = 0;
+
+Buyer buyers[10];
+int num_buyers = 0;
+
+Transaction transactions[100];
+int num_transactions = 0;
+
 int main()
 {
     int choice;
