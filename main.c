@@ -7,6 +7,29 @@ void propertylist();
 void search();
 void findProperties();
 
+typedef struct property {
+    char address[50];
+    int price;
+    int area;
+} Property;
+
+typedef struct buyer {
+    char name[20];
+    int budget;
+    int min_area;
+} Buyer;
+
+typedef struct seller {
+    char name[20];
+    int num_properties;
+    Property properties[10];
+} Seller;
+
+typedef struct transaction {
+    Seller seller;
+    Property property;
+    Buyer buyer;
+} Transaction;
 
 struct agent
 {
