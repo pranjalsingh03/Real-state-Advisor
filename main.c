@@ -91,6 +91,8 @@ int main()
             break;
         case 3:
             search();
+        case 4:
+            list_properties();
         }
     }
 }
