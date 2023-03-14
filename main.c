@@ -162,3 +162,51 @@ void findProperties(struct Property propertyList[], int numProperties, int maxPr
     }
 }
 
+
+//Implement a function for adding a new property to a seller's list of properties:
+
+
+void add_property(Seller *seller, Property property) {
+    seller->properties[seller->num_properties] = property;
+    seller->num_properties++;
+}
+
+//Implement a function for listing all available properties that meet a buyer's requirements:
+
+
+void list_properties(Buyer buyer, Seller *sellers, int num_sellers) {
+    for (int i = 0; i < num_sellers; i++) {
+        for (int j = 0; j < sellers[i].num_properties; j++) {
+            if (sellers[i].properties[j].price <= buyer.budget &&
+                sellers[i].properties[j].area >= buyer.min_area) {
+                printf("Address: %s\nPrice: %d\nArea: %d\n", 
+                       sellers[i].properties[j].address,
+                       sellers[i].properties[j].price,
+                       sellers[i].properties[j].area);
+            }
+        }
+    }
+}
+
+//Implement a function for initiating a transaction between a buyer and seller for a specific property:
+
+
+void initiate_transaction(Buyer buyer, Seller seller, Property property) {
+    Transaction transaction = {seller, property, buyer};
+    transactions[num_transactions] = transaction;
+    num_transactions++;
+
+    // Remove the property from the seller's list of properties
+    for (int i = 0; i < seller.num_properties; i++) {
+        if (strcmp(seller.properties[i].address, property.address) == 0) {
+            for (int j = i + 1; j < seller.num_properties; j++) {
+                seller.properties[j-1] = seller.properties[j];
+            }
+            seller.num_properties--;
+            break;
+        }
+    }
+
+    // Deduct the price of the property from the buyer's budget
+    buyer.budget -= property.price;
+}
