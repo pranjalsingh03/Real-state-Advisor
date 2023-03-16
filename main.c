@@ -90,9 +90,11 @@ int main()
             propertylist();
             break;
         case 3:
-            search();
+            findProperties();
+            break;
         case 4:
             list_properties();
+            break;
         }
     }
 }
@@ -145,10 +147,6 @@ void propertylist()
         printf("\nEnter number of bedrooms:");
         scanf("%d", &propertyList[i].bedrooms);
     }
-}
-
-void search()
-{
 }
 
 void findProperties(struct Property propertyList[], int numProperties, int maxPrice, int minSize, int minBedrooms){
