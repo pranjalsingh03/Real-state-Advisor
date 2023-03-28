@@ -6,6 +6,14 @@ void addrecord();
 void propertylist();
 void search();
 void findProperties();
+void initiate_transaction();
+void delete_record();
+void user_profile();
+void exit();
+void add_property();
+void list_properties();
+void delete_property();
+void delete_seller();
 
 typedef struct property {
     char address[50];
@@ -210,3 +218,32 @@ void initiate_transaction(Buyer buyer, Seller seller, Property property) {
     // Deduct the price of the property from the buyer's budget
     buyer.budget -= property.price;
 }
+
+//Implement a function for displaying all transactions that have been initiated:
+
+
+void display_transactions() {
+    for (int i = 0; i < num_transactions; i++) {
+        printf("Seller: %s %s (%s) - %s - %d - %d - %d - %d - %d - %d - %d - %d )\n", 
+               transactions[i].seller.first_name,
+               transactions[i].seller.last_name,
+               transactions[i].seller.email,
+               transactions[i].seller.properties[0].address,
+               transactions[i].seller.properties[0].price,
+               transactions[i].seller.properties[0].area,
+               transactions[i].seller.properties[0].bedrooms,
+               transactions[i].seller.properties[0].bathrooms,
+               transactions[i].seller.properties[0].garages,
+               transactions[i].seller.properties[0].year_built,
+               transactions[i].seller.properties[0].lot_size,
+               transactions[i].seller.properties[0].has_pool);
+        printf("Buyer: %s %s (%s) - %d)\n",
+                transactions[i].buyer.first_name,
+                transactions[i].buyer.last_name,
+                transactions[i].buyer.email,
+                transactions[i].buyer.budget);
+    }
+}
+
+//Implement a function for displaying all properties that are currently available for sale:
+
