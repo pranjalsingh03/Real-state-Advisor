@@ -19,24 +19,95 @@ typedef struct property {
     char address[50];
     int price;
     int area;
+    int bedrooms;
+    int bathrooms;
+    int parking;
+    int year_built;
+    int year_renovated;
+    int property_id;
+    int seller_id;
+    int buyer_id;
+    int agent_id;
+    int transaction_id;
+    int status;
+    char type[20];
+    char location[20];
+    char description[100];
+    char seller[20];
+    char buyer[20];
+    char agent[20];
+    char transaction[20];
+    int plot_area;
+    int plot_length;
+    int plot_width;
+    int plot_size;
+    int garages;
+    int storey;
+    int pool;
+    int garden;
+    int balcony;
+    int furnished;
+    int security;
+    int lift;
+    int gym;
+    char has_garden[20];
+    char has_pool[20];
+    char has_balcony[20];
+    char has_furnished[20];
+    char has_security[20];
+    char has_lift[20];
+    char has_gym[20];
+    char has_garages[20];
+    
 } Property;
 
 typedef struct buyer {
     char name[20];
     int budget;
     int min_area;
+    char first_name[20];
+    char last_name[20];
+    char Address[20];
+    int Mobile_no;
+    char Property_holding[20];
+    int total_property;
+    char email[20];
+    int num_properties;
+    int num_transactions;
+    int num_agents;
+    int num_sellers;
+    int num_buyers;
+    char properties[10];
+    char transactions[10];
+    char agents[10];
+    char sellers[10];
+    char buyers[10];
+
 } Buyer;
 
 typedef struct seller {
     char name[20];
     int num_properties;
     Property properties[10];
+    char first_name[20];
+    char last_name[20];
+    char Address[20];
+    int Mobile_no;
+    char Property_holding[20];
+    int total_property;
+    char email[20];
 } Seller;
 
 typedef struct transaction {
     Seller seller;
     Property property;
     Buyer buyer;
+    char first_name[20];
+    char last_name[20];
+    char Address[20];
+    int Mobile_no;
+    char Property_holding[20];
+    int total_property;
 } Transaction;
 
 struct agent
@@ -49,39 +120,7 @@ struct agent
     int total_property;
 };
 
-struct seller
-{
-    char first_name[20];
-    char last_name[20];
-    char Address[20];
-    int Mobile_no;
-    char Property_holding[20];
-    int total_property;
-};
-
-struct buyer
-{
-    char first_name[20];
-    char last_name[20];
-    char Address[20];
-    int Mobile_no;
-    char Property_holding[20];
-    int total_property;
-};
-
-struct transaction
-{
-    char first_name[20];
-    char last_name[20];
-    char Address[20];
-    int Mobile_no;
-    char Property_holding[20];
-    int total_property;
-};
-
-
-
-struct Property
+typedef struct Property
 {
     char location[50];
     int price;
@@ -89,7 +128,8 @@ struct Property
     int bedrooms;
 };
 
-struct agent agent[10];
+
+typedef struct agent agent[10];
 int num_agents = 0;
 
 
@@ -165,6 +205,12 @@ void addrecord()
     FILE *fp;
     fp = fopen("addrecord.txt", "w");
 
+    if (fp == NULL)
+    {
+        printf("Cannot open file");
+        exit(0);
+    }
+
     do
     {
         fp = fopen("addrecord.txt", "a");
@@ -184,6 +230,8 @@ void addrecord()
         fclose(fp);
         printf("\t\t\t\t \nDo you want to add any other record?(y/n)"); // To add another record
         scanf("\n%s", &another);
+
+
     } while (another == 'y' || another == 'Y');
 
     fclose(fp);
@@ -292,7 +340,7 @@ void initiate_transaction(Buyer buyer, Seller seller, Property property) {
 
 void display_transactions() {
     for (int i = 0; i < num_transactions; i++) {
-        printf("Seller: %s %s (%s) - %s - %d - %d - %d - %d - %d - %d - %d - %d )\n", 
+        printf("Seller: %s %s (%s) - %s - %d - %d - %d - %d - %d - %d - %d - %s )\n", 
                transactions[i].seller.first_name,
                transactions[i].seller.last_name,
                transactions[i].seller.email,
@@ -303,7 +351,7 @@ void display_transactions() {
                transactions[i].seller.properties[0].bathrooms,
                transactions[i].seller.properties[0].garages,
                transactions[i].seller.properties[0].year_built,
-               transactions[i].seller.properties[0].lot_size,
+               transactions[i].seller.properties[0].plot_size,
                transactions[i].seller.properties[0].has_pool);
         printf("Buyer: %s %s (%s) - %d)\n",
                 transactions[i].buyer.first_name,
