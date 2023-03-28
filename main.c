@@ -49,6 +49,38 @@ struct agent
     int total_property;
 };
 
+struct seller
+{
+    char first_name[20];
+    char last_name[20];
+    char Address[20];
+    int Mobile_no;
+    char Property_holding[20];
+    int total_property;
+};
+
+struct buyer
+{
+    char first_name[20];
+    char last_name[20];
+    char Address[20];
+    int Mobile_no;
+    char Property_holding[20];
+    int total_property;
+};
+
+struct transaction
+{
+    char first_name[20];
+    char last_name[20];
+    char Address[20];
+    int Mobile_no;
+    char Property_holding[20];
+    int total_property;
+};
+
+
+
 struct Property
 {
     char location[50];
@@ -57,14 +89,22 @@ struct Property
     int bedrooms;
 };
 
+struct agent agent[10];
+int num_agents = 0;
+
+
 Seller sellers[10];
 int num_sellers = 0;
+
+
 
 Buyer buyers[10];
 int num_buyers = 0;
 
 Transaction transactions[100];
 int num_transactions = 0;
+
+
 
 int main()
 {
@@ -103,6 +143,17 @@ int main()
         case 4:
             list_properties();
             break;
+        case 5:
+            delete_record();
+            break;
+        case 99:
+            user_profile();
+            break;
+        case 0:
+            exit(0);
+            break;
+        default:
+            printf("Invalid Choice");
         }
     }
 }
@@ -134,6 +185,20 @@ void addrecord()
         printf("\t\t\t\t \nDo you want to add any other record?(y/n)"); // To add another record
         scanf("\n%s", &another);
     } while (another == 'y' || another == 'Y');
+
+    fclose(fp);
+
+    printf("\t\t\t\t \nRecord added successfully");
+
+    printf("\t\t\t\t \nPress any key to continue");
+    getch();
+
+    system("cls");
+
+    main();
+
+    return 0;
+
 }
 void propertylist()
 {
@@ -142,6 +207,8 @@ void propertylist()
 
     printf("Enter the number of properties:");
     scanf("%d", &numProperties);
+
+
 
     for (int i = 0; i < numProperties; i++)
     {
@@ -166,6 +233,7 @@ void findProperties(struct Property propertyList[], int numProperties, int maxPr
             printf("\nPrice: $%d", propertyList[i].price);
             printf("\nSize: %d sq ft", propertyList[i].size);
             printf("\nBedrooms: %d\n", propertyList[i].bedrooms);
+
         }
     }
 }
@@ -245,5 +313,75 @@ void display_transactions() {
     }
 }
 
+
 //Implement a function for displaying all properties that are currently available for sale:
+
+
+void display_properties(Seller *sellers, int num_sellers) {
+    for (int i = 0; i < num_sellers; i++) {
+        for (int j = 0; j < sellers[i].num_properties; j++) {
+            printf("Address: %s\nPrice: %d\nArea: %d\n", 
+                   sellers[i].properties[j].address,
+                   sellers[i].properties[j].price,
+                   sellers[i].properties[j].area);
+        }
+    }
+}
+
+//Implement a function for displaying all sellers:
+
+
+void display_sellers(Seller *sellers, int num_sellers) {
+    for (int i = 0; i < num_sellers; i++) {
+        printf("Name: %s %s\nEmail: %s\n", 
+               sellers[i].first_name,
+               sellers[i].last_name,
+               sellers[i].email);
+    }
+}
+
+
+//Implement a function for displaying all buyers:
+
+
+void display_buyers(Buyer *buyers, int num_buyers) {
+    for (int i = 0; i < num_buyers; i++) {
+        printf("Name: %s %s\nEmail: %s\n", 
+               buyers[i].first_name,
+               buyers[i].last_name,
+               buyers[i].email);
+    }
+}
+
+//Implement a function for displaying all users:
+
+
+void display_users(User *users, int num_users) {
+    for (int i = 0; i < num_users; i++) {
+        printf("Name: %s %s\nEmail: %s\n", 
+               users[i].first_name,
+               users[i].last_name,
+               users[i].email);
+    }
+}
+
+//Implement a function for displaying all users that are currently logged in:
+
+
+void display_logged_in_users(User *users, int num_users) {
+    for (int i = 0; i < num_users; i++) {
+        if (users[i].is_logged_in) {
+            printf("Name: %s %s\nEmail: %s\n", 
+                   users[i].first_name,
+                   users[i].last_name,
+                   users[i].email);
+        }
+    }
+}
+
+
+//Implement a function for displaying all users that are currently logged out:
+
+
+
 
