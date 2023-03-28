@@ -380,8 +380,4 @@ void display_logged_in_users(User *users, int num_users) {
 }
 
 
-//Implement a function for displaying all users that are currently logged out:
-
-
-
 
