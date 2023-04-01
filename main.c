@@ -1,4 +1,10 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+#include <conio.h>
+#include <time.h>
+#include <stdbool.h>
 
 
 
@@ -14,6 +20,15 @@ void add_property();
 void list_properties();
 void delete_property();
 void delete_seller();
+void display_seller();
+void display_buyer();
+void display_agent();
+void display_transaction();
+void display_property();
+void delete_buyer();
+void delete_agent();
+void display_logged_in_user();
+
 
 typedef struct property {
     char address[50];
@@ -61,6 +76,30 @@ typedef struct property {
     
 } Property;
 
+
+typedef struct User {
+    char first_name[20];
+    char last_name[20];
+    char Address[20];
+    int Mobile_no;
+    char Property_holding[20];
+    int total_property;
+    char email[20];
+    int num_properties;
+    int num_transactions;
+    int num_agents;
+    int num_sellers;
+    int num_buyers;
+    char properties[10];
+    char transactions[10];
+    char agents[10];
+    char sellers[10];
+    char buyers[10];
+    bool is_logged_in;
+} User;
+
+
+
 typedef struct buyer {
     char name[20];
     int budget;
@@ -102,8 +141,8 @@ typedef struct transaction {
     Seller seller;
     Property property;
     Buyer buyer;
-    char first_name[20];
-    char last_name[20];
+    char first_name[50];
+    char last_name[50];
     char Address[20];
     int Mobile_no;
     char Property_holding[20];
@@ -425,4 +464,9 @@ void display_logged_in_users(User *users, int num_users) {
                    users[i].email);
         }
     }
+}
+
+void exit_program() {
+    printf("Exiting program...\n");
+    exit(0);
 }
