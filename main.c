@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
-#in
 #include <time.h>
 #include <stdbool.h>
 
@@ -83,7 +82,7 @@ typedef struct User {
     char Address[20];
     int Mobile_no;
     char Property_holding[20];
-    int total_property;
+    char total_property[50];
     char email[20];
     int num_properties;
     int num_transactions;
@@ -109,7 +108,7 @@ typedef struct buyer {
     char Address[20];
     int Mobile_no;
     char Property_holding[20];
-    int total_property;
+    char total_property[50];
     char email[20];
     int num_properties;
     int num_transactions;
@@ -133,7 +132,7 @@ typedef struct seller {
     char Address[20];
     int Mobile_no;
     char Property_holding[20];
-    int total_property;
+    char total_property[50];
     char email[20];
 } Seller;
 
@@ -146,7 +145,7 @@ typedef struct transaction {
     char Address[20];
     int Mobile_no;
     char Property_holding[20];
-    int total_property;
+    char total_property[50];
 } Transaction;
 
 struct agent
@@ -156,10 +155,10 @@ struct agent
     char Address[20];
     int Mobile_no;
     char Property_holding[20];
-    int total_property;
+    char total_property[50];
 };
 
-typedef struct Property
+struct Property
 {
     char location[50];
     int price;
@@ -255,17 +254,17 @@ void addrecord()
         fp = fopen("addrecord.txt", "a");
         printf("\t\t\t\t\nAdd New Record\t\t\t\t");
         printf("\nEnter the user first name: ");
-        scanf("%c", &first_name); // first name
+        scanf("%c", first_name); // first name
         printf("\nEnter the user last name: ");
-        scanf("%c", &last_name); // last name
+        scanf("%c", last_name); // last name
         printf("\nEnter the user Address: ");
-        scanf("%c", &address); // address
+        scanf("%c", address); // address
         printf("\nEnter the user Mobile No.: ");
-        scanf("%c", &mobile_no); // Mobile No.
+        scanf("%d", &mobile_no); // Mobile No.
         printf("\nEnter the users Property Holdings: ");
-        scanf("%c", &Property_holdings); // propert holdings
+        scanf("%c", Property_holdings); // propert holdings
         printf("\nEnter the user total property: ");
-        scanf("%c", &total_property); // total property
+        scanf("%c", total_property); // total property
         fclose(fp);
         printf("\t\t\t\t \nDo you want to add any other record?(y/n)"); // To add another record
         scanf("\n%s", &another);
@@ -273,18 +272,18 @@ void addrecord()
 
     } while (another == 'y' || another == 'Y');
 
-    fclose(fp);
+    // fclose(fp);
 
     printf("\t\t\t\t \nRecord added successfully");
 
     printf("\t\t\t\t \nPress any key to continue");
-    getch();
+    // getch();
 
     system("cls");
 
     main();
 
-    return 0;
+    
 
 }
 void propertylist()
@@ -301,7 +300,7 @@ void propertylist()
     {
         printf("\nProperty %d:", i + 1);
         printf("\nEnter location:");
-        scanf("%s", &propertyList[i].location);
+        scanf("%s", propertyList[i].location);
         printf("\nEnter price:");
         scanf("%d", &propertyList[i].price);
         printf("\nEnter size (in sq ft):");
@@ -311,160 +310,160 @@ void propertylist()
     }
 }
 
-void findProperties(struct Property propertyList[], int numProperties, int maxPrice, int minSize, int minBedrooms){
-    printf("\nMatching properties:\n");
+// void findProperties(struct Property propertyList[], int numProperties, int maxPrice, int minSize, int minBedrooms){
+//     printf("\nMatching properties:\n");
 
-    for(int i=0; i<numProperties; i++){
-        if(propertyList[i].price <= maxPrice && propertyList[i].size >= minSize && propertyList[i].bedrooms >= minBedrooms){
-            printf("\nLocation: %s", propertyList[i].location);
-            printf("\nPrice: $%d", propertyList[i].price);
-            printf("\nSize: %d sq ft", propertyList[i].size);
-            printf("\nBedrooms: %d\n", propertyList[i].bedrooms);
+//     for(int i=0; i<numProperties; i++){
+//         if(propertyList[i].price <= maxPrice && propertyList[i].size >= minSize && propertyList[i].bedrooms >= minBedrooms){
+//             printf("\nLocation: %s", propertyList[i].location);
+//             printf("\nPrice: $%d", propertyList[i].price);
+//             printf("\nSize: %d sq ft", propertyList[i].size);
+//             printf("\nBedrooms: %d\n", propertyList[i].bedrooms);
 
-        }
-    }
-}
-
-
-//Implement a function for adding a new property to a seller's list of properties:
+//         }
+//     }
+// }
 
 
-void add_property(Seller *seller, Property property) {
-    seller->properties[seller->num_properties] = property;
-    seller->num_properties++;
-}
-
-//Implement a function for listing all available properties that meet a buyer's requirements:
+// //Implement a function for adding a new property to a seller's list of properties:
 
 
-void list_properties(Buyer buyer, Seller *sellers, int num_sellers) {
-    for (int i = 0; i < num_sellers; i++) {
-        for (int j = 0; j < sellers[i].num_properties; j++) {
-            if (sellers[i].properties[j].price <= buyer.budget &&
-                sellers[i].properties[j].area >= buyer.min_area) {
-                printf("Address: %s\nPrice: %d\nArea: %d\n", 
-                       sellers[i].properties[j].address,
-                       sellers[i].properties[j].price,
-                       sellers[i].properties[j].area);
-            }
-        }
-    }
-}
+// void add_property(Seller *seller, Property property) {
+//     seller->properties[seller->num_properties] = property;
+//     seller->num_properties++;
+// }
 
-//Implement a function for initiating a transaction between a buyer and seller for a specific property:
+// //Implement a function for listing all available properties that meet a buyer's requirements:
 
 
-void initiate_transaction(Buyer buyer, Seller seller, Property property) {
-    Transaction transaction = {seller, property, buyer};
-    transactions[num_transactions] = transaction;
-    num_transactions++;
+// void list_properties(Buyer buyer, Seller *sellers, int num_sellers) {
+//     for (int i = 0; i < num_sellers; i++) {
+//         for (int j = 0; j < sellers[i].num_properties; j++) {
+//             if (sellers[i].properties[j].price <= buyer.budget &&
+//                 sellers[i].properties[j].area >= buyer.min_area) {
+//                 printf("Address: %s\nPrice: %d\nArea: %d\n", 
+//                        sellers[i].properties[j].address,
+//                        sellers[i].properties[j].price,
+//                        sellers[i].properties[j].area);
+//             }
+//         }
+//     }
+// }
 
-    // Remove the property from the seller's list of properties
-    for (int i = 0; i < seller.num_properties; i++) {
-        if (strcmp(seller.properties[i].address, property.address) == 0) {
-            for (int j = i + 1; j < seller.num_properties; j++) {
-                seller.properties[j-1] = seller.properties[j];
-            }
-            seller.num_properties--;
-            break;
-        }
-    }
-
-    // Deduct the price of the property from the buyer's budget
-    buyer.budget -= property.price;
-}
-
-//Implement a function for displaying all transactions that have been initiated:
+// //Implement a function for initiating a transaction between a buyer and seller for a specific property:
 
 
-void display_transactions() {
-    for (int i = 0; i < num_transactions; i++) {
-        printf("Seller: %s %s (%s) - %s - %d - %d - %d - %d - %d - %d - %d - %s )\n", 
-               transactions[i].seller.first_name,
-               transactions[i].seller.last_name,
-               transactions[i].seller.email,
-               transactions[i].seller.properties[0].address,
-               transactions[i].seller.properties[0].price,
-               transactions[i].seller.properties[0].area,
-               transactions[i].seller.properties[0].bedrooms,
-               transactions[i].seller.properties[0].bathrooms,
-               transactions[i].seller.properties[0].garages,
-               transactions[i].seller.properties[0].year_built,
-               transactions[i].seller.properties[0].plot_size,
-               transactions[i].seller.properties[0].has_pool);
-        printf("Buyer: %s %s (%s) - %d)\n",
-                transactions[i].buyer.first_name,
-                transactions[i].buyer.last_name,
-                transactions[i].buyer.email,
-                transactions[i].buyer.budget);
-    }
-}
+// void initiate_transaction(Buyer buyer, Seller seller, Property property) {
+//     Transaction transaction = {seller, property, buyer};
+//     transactions[num_transactions] = transaction;
+//     num_transactions++;
+
+//     // Remove the property from the seller's list of properties
+//     for (int i = 0; i < seller.num_properties; i++) {
+//         if (strcmp(seller.properties[i].address, property.address) == 0) {
+//             for (int j = i + 1; j < seller.num_properties; j++) {
+//                 seller.properties[j-1] = seller.properties[j];
+//             }
+//             seller.num_properties--;
+//             break;
+//         }
+//     }
+
+//     // Deduct the price of the property from the buyer's budget
+//     buyer.budget -= property.price;
+// }
+
+// //Implement a function for displaying all transactions that have been initiated:
 
 
-//Implement a function for displaying all properties that are currently available for sale:
+// void display_transactions() {
+//     for (int i = 0; i < num_transactions; i++) {
+//         printf("Seller: %s %s (%s) - %s - %d - %d - %d - %d - %d - %d - %d - %s )\n", 
+//                transactions[i].seller.first_name,
+//                transactions[i].seller.last_name,
+//                transactions[i].seller.email,
+//                transactions[i].seller.properties[0].address,
+//                transactions[i].seller.properties[0].price,
+//                transactions[i].seller.properties[0].area,
+//                transactions[i].seller.properties[0].bedrooms,
+//                transactions[i].seller.properties[0].bathrooms,
+//                transactions[i].seller.properties[0].garages,
+//                transactions[i].seller.properties[0].year_built,
+//                transactions[i].seller.properties[0].plot_size,
+//                transactions[i].seller.properties[0].has_pool);
+//         printf("Buyer: %s %s (%s) - %d)\n",
+//                 transactions[i].buyer.first_name,
+//                 transactions[i].buyer.last_name,
+//                 transactions[i].buyer.email,
+//                 transactions[i].buyer.budget);
+//     }
+// }
 
 
-void display_properties(Seller *sellers, int num_sellers) {
-    for (int i = 0; i < num_sellers; i++) {
-        for (int j = 0; j < sellers[i].num_properties; j++) {
-            printf("Address: %s\nPrice: %d\nArea: %d\n", 
-                   sellers[i].properties[j].address,
-                   sellers[i].properties[j].price,
-                   sellers[i].properties[j].area);
-        }
-    }
-}
-
-//Implement a function for displaying all sellers:
+// //Implement a function for displaying all properties that are currently available for sale:
 
 
-void display_sellers(Seller *sellers, int num_sellers) {
-    for (int i = 0; i < num_sellers; i++) {
-        printf("Name: %s %s\nEmail: %s\n", 
-               sellers[i].first_name,
-               sellers[i].last_name,
-               sellers[i].email);
-    }
-}
+// void display_properties(Seller *sellers, int num_sellers) {
+//     for (int i = 0; i < num_sellers; i++) {
+//         for (int j = 0; j < sellers[i].num_properties; j++) {
+//             printf("Address: %s\nPrice: %d\nArea: %d\n", 
+//                    sellers[i].properties[j].address,
+//                    sellers[i].properties[j].price,
+//                    sellers[i].properties[j].area);
+//         }
+//     }
+// }
+
+// //Implement a function for displaying all sellers:
 
 
-//Implement a function for displaying all buyers:
+// void display_sellers(Seller *sellers, int num_sellers) {
+//     for (int i = 0; i < num_sellers; i++) {
+//         printf("Name: %s %s\nEmail: %s\n", 
+//                sellers[i].first_name,
+//                sellers[i].last_name,
+//                sellers[i].email);
+//     }
+// }
 
 
-void display_buyers(Buyer *buyers, int num_buyers) {
-    for (int i = 0; i < num_buyers; i++) {
-        printf("Name: %s %s\nEmail: %s\n", 
-               buyers[i].first_name,
-               buyers[i].last_name,
-               buyers[i].email);
-    }
-}
-
-//Implement a function for displaying all users:
+// //Implement a function for displaying all buyers:
 
 
-void display_users(User *users, int num_users) {
-    for (int i = 0; i < num_users; i++) {
-        printf("Name: %s %s\nEmail: %s\n", 
-               users[i].first_name,
-               users[i].last_name,
-               users[i].email);
-    }
-}
+// void display_buyers(Buyer *buyers, int num_buyers) {
+//     for (int i = 0; i < num_buyers; i++) {
+//         printf("Name: %s %s\nEmail: %s\n", 
+//                buyers[i].first_name,
+//                buyers[i].last_name,
+//                buyers[i].email);
+//     }
+// }
 
-//Implement a function for displaying all users that are currently logged in:
+// //Implement a function for displaying all users:
 
 
-void display_logged_in_users(User *users, int num_users) {
-    for (int i = 0; i < num_users; i++) {
-        if (users[i].is_logged_in) {
-            printf("Name: %s %s\nEmail: %s\n", 
-                   users[i].first_name,
-                   users[i].last_name,
-                   users[i].email);
-        }
-    }
-}
+// void display_users(User *users, int num_users) {
+//     for (int i = 0; i < num_users; i++) {
+//         printf("Name: %s %s\nEmail: %s\n", 
+//                users[i].first_name,
+//                users[i].last_name,
+//                users[i].email);
+//     }
+// }
+
+// //Implement a function for displaying all users that are currently logged in:
+
+
+// void display_logged_in_users(User *users, int num_users) {
+//     for (int i = 0; i < num_users; i++) {
+//         if (users[i].is_logged_in) {
+//             printf("Name: %s %s\nEmail: %s\n", 
+//                    users[i].first_name,
+//                    users[i].last_name,
+//                    users[i].email);
+//         }
+//     }
+// }
 
 void exit_program() {
     printf("Exiting program...\n");
