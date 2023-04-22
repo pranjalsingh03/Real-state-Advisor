@@ -21,7 +21,7 @@ void delete_property();
 void delete_seller();
 void display_seller();
 void display_buyer();
-void display_agent();
+void z();
 void display_transaction();
 void display_property();
 void delete_buyer();
