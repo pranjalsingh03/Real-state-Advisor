@@ -23,7 +23,7 @@ struct addrecord
     char propertyImage[100];
     char propertyDate[50];
     int propertyID;
-    char another;
+    
 } add;
 
 
@@ -46,7 +46,7 @@ int main()
         {
         case 1:
             addNewRecord();
-            
+            break;
         case 2:
             display_packages();
             // printf("Property Listing\n");
@@ -76,6 +76,7 @@ int main()
 void addNewRecord()
 {
     struct addrecord add;
+    char another;
     FILE *fp;
     
     // fwrite("addrecord.txt", sizeof(struct addrecord), 1, fp);
@@ -102,22 +103,16 @@ void addNewRecord()
         scanf("%s", add.propertyPrice);
         printf("Enter Property Size: ");
         scanf("%s", add.propertySize);
-        printf("Enter Property Status: ");
-        scanf("%s", add.propertyStatus);
         printf("Enter Property Description: ");
         scanf("%s", add.propertyDescription);
-        printf("Enter Property Image: ");
-        scanf("%s", add.propertyImage);
-        printf("Enter Property Date: ");
-        scanf("%s", add.propertyDate);
         printf("Enter Property ID: ");
         scanf("%d", &add.propertyID);
         printf("Do you want to add another record? (y/n): ");
-        scanf("%s", &add.another);
+        scanf("%s", &another);
 
-    } while (add.another == 'y' || add.another == 'Y');
+    } while (another == 'y' || another == 'Y');
         printf("\t\t\t\t\t Record Added Successfully\n");
-    fp = fopen("pacakage.dat.", "f");
+    fp = fopen("record.txt.", "a");
     if (fp == NULL)
     {
         printf("Error opening file: ");
@@ -135,17 +130,17 @@ void display_packages() {
     struct addrecord add;
     FILE *fp;
 
-    fp = fopen("pacakage.dat.", "f");
+    fp = fopen("record.txt.", "r");
     if(fp == NULL) {
         printf("Error opening file!");
         return;
     }
 
-    printf("\nID\tSender\tReceiver\tWeight\tStatus\n");
+    printf("\nProperty ID\tName\tAddress\tMobile No.\tPrice\tSize\t\n");
     printf("--------------------------------------------------\n");
 
     while(fread(&add, sizeof(add), 1, fp)) {
-        printf("%s\t%s\t%s\t%.2f\t%s\n", add.name, add.propertyID, add.propertyLocation, add.propertyPrice, add.propertyStatus);
+        printf("%s\t%s\t%s\t%.2f\t%s\n", add.name, add.propertyID, add.propertyLocation, add.propertyPrice, add.propertySize);
     }
 
     fclose(fp);
