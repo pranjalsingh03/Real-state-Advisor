@@ -81,7 +81,7 @@ break;
 }
 
 printf("\n");
-} while (choice != 6);
+} while (choice != 7);
 
 return 0;
 }
